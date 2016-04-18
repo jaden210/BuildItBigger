@@ -17,5 +17,6 @@ public class JokeLibrary extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.joke);
         textView.setText(joke);
 
+
     }
 }
