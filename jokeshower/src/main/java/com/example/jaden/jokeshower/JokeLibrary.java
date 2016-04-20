@@ -13,7 +13,7 @@ public class JokeLibrary extends AppCompatActivity {
         setContentView(R.layout.activity_joke_library);
 
         Intent intent = getIntent();
-        String joke = intent.getStringExtra("joke");
+        String joke = intent.getStringExtra("newjoke");
         TextView textView = (TextView) findViewById(R.id.joke);
         textView.setText(joke);
 
