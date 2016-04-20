@@ -1,16 +1,13 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 import com.example.Jokes;
-import com.example.jaden.jokeshower.JokeLibrary;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -19,9 +16,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
     }
 
 
@@ -50,11 +44,12 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void LaunchJoketellerResult (View view) {
-        Jokes myJokes = new Jokes();
-        String oneJoke = myJokes.getJoke();
-        Intent intent = new Intent(this, JokeLibrary.class);
-        intent.putExtra("joke", oneJoke);
-        startActivity(intent);
+        //this is the old way I need to use the asynctask
+        final String joke = new Jokes().getJoke();
+
+        //async
+        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "joke"));
+
     }
 
 

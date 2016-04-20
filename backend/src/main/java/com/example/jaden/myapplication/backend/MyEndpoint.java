@@ -9,29 +9,29 @@ package com.example.jaden.myapplication.backend;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-
+import com.example.Jokes;
 import javax.inject.Named;
 
 /** An endpoint class we are exposing */
 @Api(
-  name = "myApi",
-  version = "v1",
-  namespace = @ApiNamespace(
-    ownerDomain = "backend.myapplication.jaden.example.com",
-    ownerName = "backend.myapplication.jaden.example.com",
-    packagePath=""
-  )
+        name = "myApi",
+        version = "v1",
+        namespace = @ApiNamespace(
+                ownerDomain = "backend.myapplication.jaden.example.com",
+                ownerName = "backend.myapplication.jaden.example.com",
+                packagePath=""
+        )
 )
 public class MyEndpoint {
 
     /** A simple endpoint method that takes a name and says Hi back */
-    @ApiMethod(name = "sayHi")
-    public MyBean sayHi(@Named("name") String name) {
+    @ApiMethod(name = "getJoke")
+    public MyBean getJoke(@Named("name") String name) {
         MyBean response = new MyBean();
-        response.setData("Hi, " + name);
-
+        Jokes getJoke = new Jokes();
+        response.setData(getJoke.getJoke());
         return response;
     }
-    
+
 
 }
